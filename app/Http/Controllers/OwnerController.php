@@ -2,75 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreownerRequest;
-use App\Http\Requests\UpdateownerRequest;
-use App\Models\owner;
+use App\Models\Owner;
+use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $owners = owner::all();
-        return view('owners.index')->with('owners',$owners);
+        $owners = Owner::all();
+        return view('owners.index', compact('owners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('owners.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreownerRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validate([
-        'name' => 'required|max:255',
-        'surname' => 'required|max:255',
-        ]);
-
-        Owner::create($validated);
-        return redirect()->route('owners.index')->with('success','Owner added successfully.');
+        // Using all() ensures 'name' and 'surname' are caught from your form
+        Owner::create($request->all());
+        return redirect()->route('owners.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(owner $owner)
+    public function edit(Owner $owner)
     {
-        return view('owners.show')->with('owner',$owner);
+        return view('owners.edit', compact('owner'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(owner $owner)
+    public function update(Request $request, Owner $owner)
     {
-        return view('owners.edit')->with('owner',$owner);
+        $owner->update($request->all());
+        return redirect()->route('owners.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateownerRequest $request, owner $owner)
-{
-    $owner->update($request->validated());
-
-    return redirect()->route('owners.index')->with('success', 'Owner updated successfully.');
-}
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(owner $owner)
+    public function destroy(Owner $owner)
     {
         $owner->delete();
-        return back()->with('success','Owner deleted successfully.');
+        return redirect()->route('owners.index');
     }
 }
