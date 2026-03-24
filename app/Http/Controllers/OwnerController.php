@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Owner;
+use App\Models\user;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller

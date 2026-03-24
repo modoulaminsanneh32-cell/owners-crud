@@ -2,12 +2,21 @@
 
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\CarController;
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 
 // Redirect home to Owners
 Route::get('/', function () {
     return redirect()->route('owners.index');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/owners', [OwnersController::class,'index'])->name('owners.index');
+    Route::resource('cars', CarController::class)->only(['index']);
 
 // Owners Routes
 Route::get('/owners', [OwnerController::class, 'index'])->name('owners.index');
@@ -24,3 +33,5 @@ Route::post('/cars/store', [CarController::class, 'store'])->name('cars.store');
 Route::get('/cars/{car}/edit', [CarController::class, 'edit'])->name('cars.edit');
 Route::put('/cars/{car}', [CarController::class, 'update'])->name('cars.update');
 Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.delete');
+
+});

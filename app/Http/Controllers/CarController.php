@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\KillSystem;
 use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
+     public function __construct(){
+
+    }
     public function index()
     {
         // We use all() so we can loop through them in the index table

@@ -7,7 +7,9 @@
                 <div class="card">
                     <div class="card-header">Owners</div>
                     <div class="card-body">
+                        @if (Auth::user()->type=='admin')
                         <a href="{{ route('owners.create') }}" class="btn btn-success float-end">Add new Owner</a>
+                        @endif
                         <br><br>
                         <hr>
                         <table class="table table-striped">
@@ -16,7 +18,9 @@
                                 <th>Name</th>
                                 <th>Surname</th>
                                 <th>Cars</th>
+                                @if (Auth::user()->type=='admin')
                                 <th>Actions</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -29,10 +33,12 @@
                                             <div class="small">• {{ $car->brand }} {{ $car->model }}</div>
                                         @endforeach
                                     </td>
+                                    @if (Auth::user()->type=='admin')
                                     <td>
                                         <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-info">Edit</a>
                                         <a href="{{ route('owners.delete', $owner->id) }}" class="btn btn-danger">Delete</a>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
