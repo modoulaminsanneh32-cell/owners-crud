@@ -5,21 +5,22 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Owners</div>
+                    <div class="card-header">{{ __('owners.owners') }}</div>
                     <div class="card-body">
                         @if (Auth::user()->type=='admin')
-                        <a href="{{ route('owners.create') }}" class="btn btn-success float-end">Add new Owner</a>
+                        <a href="{{ route('owners.create') }}" class="btn btn-success float-end">{{ __('owners.add_new') }}</a>
                         @endif
                         <br><br>
                         <hr>
+
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Cars</th>
+                                <th>{{ __('owners.name') }}</th>
+                                <th>{{ __('owners.surname') }}</th>
+                                <th>{{ __('owners.cars') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                <th>Actions</th>
+                                <th>{{ __('owners.actions') }}</th>
                                 @endif
                             </tr>
                             </thead>

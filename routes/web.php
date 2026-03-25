@@ -14,6 +14,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/setLanguage/{lang}', [App\Http\Controllers\LangController::class, 'setLanguage'])->name('setLanguage');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/owners', [OwnersController::class,'index'])->name('owners.index');
     Route::resource('cars', CarController::class)->only(['index']);

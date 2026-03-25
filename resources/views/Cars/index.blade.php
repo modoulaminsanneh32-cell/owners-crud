@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Cars</div>
+                    <div class="card-header">{{ __('Cars') }}</div>
 
                     <div class="card-body">
                         @if (Auth::user()->type=='admin')
@@ -17,12 +17,12 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Reg Number</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>Owner</th>
+                                <th>{{ __('Reg_number') }}</th>
+                                <th>{{ __('Brand') }}</th>
+                                <th>{{ __('Model') }}</th>
+                                <th>{{ __('Owner') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                <th>Actions</th>
+                                <th>{{ __('Actions') }}</th>
                                 @endif
                             </tr>
                             </thead>

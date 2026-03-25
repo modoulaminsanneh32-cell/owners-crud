@@ -10,12 +10,12 @@
                         <form action="{{ route('cars.update', $car->id) }}" method="post">
                             @csrf
                             @method('put') <div class="mb-3">
-                                <label class="form-label">Registration Number:</label>
+                                <label class="form-label">{{ __('cars.reg_number') }} :</label>
                                 <input type="text" name="reg_number" class="form-control" value="{{ $car->reg_number }}">
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Owner:</label>
+                                <label class="form-label">{{ __('cars.owner') }}:</label>
                                 <select name="owner_id" class="form-control">
                                     @foreach($owners as $owner)
                                         <option value="{{ $owner->id }}" {{ $car->owner_id == $owner->id ? 'selected' : '' }}>

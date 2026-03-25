@@ -10,22 +10,22 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">  
+            <label class="form-label">{{ __('owners.name') }}</label>
+            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
             @error('name')
                 <span class="text-danger">
                     <strong>{{$message}}</strong>
-                </span>           
+                </span>
             @enderror
            </div>
 
    <div class="mb-3">class
-            <label class="form-label">Surname</label>
-            <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror" value="{{old('surname')}}">  
+            <label class="form-label">{{ __('owners.surname') }}</label>
+            <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror" value="{{old('surname')}}">
             @error('name')
                 <span class="text-danger">
                     <strong>{{$message}}</strong>
-                </span>           
+                </span>
             @enderror
   </div>
   <div class="mb-3">
@@ -35,5 +35,5 @@
     </form>
   </div>
 </div>
-</div>    
+</div>
 @endsection

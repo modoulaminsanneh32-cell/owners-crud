@@ -5,27 +5,27 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Add New Car</div>
+                    <div class="card-header">{{ __('cars.car') }}</div>
 
                     <div class="card-body">
                         <form action="{{ route('cars.store') }}" method="POST">
                             @csrf <div class="mb-3">
-                                <label class="form-label">Registration Number</label>
+                                <label class="form-label">{{ __('cars.reg_number') }}</label>
                                 <input type="text" name="reg_number" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Brand</label>
+                                <label class="form-label">{{ __('cars.brand') }}</label>
                                 <input type="text" name="brand" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Model</label>
+                                <label class="form-label">{{ __('cars.model') }}</label>
                                 <input type="text" name="model" class="form-control" required>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Owner</label>
+                                <label class="form-label">{{ __('cars.owner') }}</label>
                                 <select name="owner_id" class="form-control" required>
                                     <option value="">-- Select Owner --</option>
                                     @foreach($owners as $owner)
