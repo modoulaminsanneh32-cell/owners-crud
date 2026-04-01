@@ -1,4 +1,8 @@
 {
-
-
+    "Automobiliai" : "Cars",
+    "Pridėti naujų Automobiliai": "Add Nec Car",
+    "Reg_numeris": "Reg Number",
+    "Prekės ženklas": "brand",
+    "modelis": "model",
+    "savininkai": "owners"
 }

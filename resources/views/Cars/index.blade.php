@@ -5,11 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Cars') }}</div>
+                    <div class="card-header">{{ __('Cars.cars') }}</div>
 
                     <div class="card-body">
                         @if (Auth::user()->type=='admin')
-                        <a href="{{ route('cars.create') }}" class="btn btn-success float-end">Add new Car</a>
+                        <a href="{{ route('cars.create') }}" class="btn btn-success float-end">{{ __('cars.add_new') }}</a>
                         @endif
                         <br><br>
                         <hr>
@@ -17,12 +17,12 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>{{ __('Reg_number') }}</th>
-                                <th>{{ __('Brand') }}</th>
-                                <th>{{ __('Model') }}</th>
+                                <th>{{ __('Reg number') }}</th>
+                                <th>{{ __('cars.Brand') }}</th>
+                                <th>{{ __('cars.Model') }}</th>
                                 <th>{{ __('Owner') }}</th>
                                 @if (Auth::user()->type=='admin')
-                                <th>{{ __('Actions') }}</th>
+                                <th>{{ __('cars.actions') }}</th>
                                 @endif
                             </tr>
                             </thead>

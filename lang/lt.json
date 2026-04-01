@@ -4,8 +4,11 @@
     "Reg Number": "Reg_numeris",
     "Brand": "Prekės ženklas",
     "Model": "modelis",
-    "owner": "savininkai"
-
-
-
+    "owners": "savininkai",
+    "Name is required and must be no longer than 60 characters": "Pavadinimas yra privalomas ir ne ilgesnis nei 60 simbolių",
+    "Surname is required": "Pavardė yra privaloma",
+    "Surname must be no longer than 60 characters": "Pavardė turi būti ne ilgesnė nei 60 simbolių",
+    "Registration Number is required and must be no longer than 60 characters": "Registracijos numeris yra privalomas ir ne ilgesnis nei 60 simbolių",
+    "brand is required": "prekės ženklas yra privaloma",
+    "model is required": "Modelis yra privaloma"
 }

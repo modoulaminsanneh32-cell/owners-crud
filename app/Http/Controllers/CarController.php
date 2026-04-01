@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\KillSystem;
+use App\Http\Requests\CarRequest;
 use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
@@ -26,9 +27,10 @@ class CarController extends Controller
         return view('cars.create', compact('owners'));
     }
 
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-        // This will save reg_number, brand, model, and owner_id
+        $request->validate();
+       
         Car::create($request->all());
         return redirect()->route('cars.index');
     }
@@ -39,8 +41,10 @@ class CarController extends Controller
         return view('cars.edit', compact('car', 'owners'));
     }
 
-    public function update(Request $request, Car $car)
+    public function update(CarRequest $request, Car $car)
     {
+        $request->validate();
+
         $car->update($request->all());
         return redirect()->route('cars.index');
     }

@@ -20,8 +20,20 @@ class OwnerController extends Controller
         return view('owners.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        $request->validate(
+            [
+                'name'=>'required|max:60',
+                'surname'=>'required|max:60'
+                ],[
+                    'name.required'=>__('name is required'),
+                    'name.max'=>__('name must not be longer than 60'),
+                    'surname.required'=>__('surname is required'),
+                    'surname.max'=>__('surname must not be longer than 60'),
+
+            ]
+);
+
         // Using all() ensures 'name' and 'surname' are caught from your form
         Owner::create($request->all());
         return redirect()->route('owners.index');

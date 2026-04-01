@@ -4,6 +4,17 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <div>
+                                {{  $error }}
+                            </div>
+                        @endforeach
+                    </div>
+
+                @endif
                 <div class="card">
                     <div class="card-header">Edit Car</div>
                     <div class="card-body">
@@ -11,7 +22,7 @@
                             @csrf
                             @method('put') <div class="mb-3">
                                 <label class="form-label">{{ __('cars.reg_number') }} :</label>
-                                <input type="text" name="reg_number" class="form-control" value="{{ $car->reg_number }}">
+                                <input class="form-control @error('reg_number') is-invalid @enderror" type="text" name="reg_number" value="{{ old('reg_number') }}" >
                             </div>
 
                             <div class="mb-3">
