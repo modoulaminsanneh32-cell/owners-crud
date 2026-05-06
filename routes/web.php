@@ -35,5 +35,6 @@ Route::post('/cars/store', [CarController::class, 'store'])->name('cars.store');
 Route::get('/cars/{car}/edit', [CarController::class, 'edit'])->name('cars.edit');
 Route::put('/cars/{car}', [CarController::class, 'update'])->name('cars.update');
 Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.delete');
+Route::get('/cars/{car}/deletePhoto', [CarController::class,'deletePhoto'])->name('cars.deletePhoto');
 
 });

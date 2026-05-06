@@ -37,7 +37,11 @@
                                     @if (Auth::user()->type=='admin')
                                     <td>
                                         <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-info">Edit</a>
-                                        <a href="{{ route('owners.delete', $owner->id) }}" class="btn btn-danger">Delete</a>
+                                        <form action="{{ route('owners.delete', $owner->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                     @endif
                                 </tr>

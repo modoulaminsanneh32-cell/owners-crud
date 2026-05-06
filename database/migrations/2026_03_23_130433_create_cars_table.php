@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('model');
             $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
