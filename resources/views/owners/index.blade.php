@@ -37,7 +37,9 @@
                                     @if (Auth::user()->type=='admin')
                                     <td>
                                         <a href="{{ route('owners.edit', $owner->id) }}" class="btn btn-info">Edit</a>
+                                        @can("deleteOwner", $owner)
                                         <form action="{{ route('owners.delete', $owner->id) }}" method="POST" style="display:inline;">
+                                        @endcan
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

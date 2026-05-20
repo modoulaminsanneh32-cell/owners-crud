@@ -11,7 +11,7 @@
         @method('PUT')
         <div class="mb-3">
             <label class="form-label">{{ __('owners.name') }}</label>
-            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}">
+            <input type="text" name="name"  class="form-control @error('name') is-invalid @enderror" value="{{ $owner->name }}">
             @error('name')
                 <span class="text-danger">
                     <strong>{{$message}}</strong>
@@ -21,7 +21,7 @@
 
    <div class="mb-3">class
             <label class="form-label">{{ __('owners.surname') }}</label>
-            <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror" value="{{old('surname')}}">
+            <input type="text" name="surname" class="form-control @error('surname') is-invalid @enderror" value="{{ $owner->surname }}">
             @error('name')
                 <span class="text-danger">
                     <strong>{{$message}}</strong>

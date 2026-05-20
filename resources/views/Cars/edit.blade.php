@@ -22,23 +22,21 @@
                             @csrf
                             @method('put') <div class="mb-3">
                                 <label class="form-label">{{ __('cars.reg_number') }} :</label>
-                                <input class="form-control @error('reg_number') is-invalid @enderror" type="text" name="reg_number" value="{{ old('reg_number') }}" >
+                                <input class="form-control @error('reg_number') is-invalid @enderror" type="text" name="reg_number" value="{{ $car->reg_number }}" >
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">{{ __('cars.model') }}</label>
-                                <input class="form-control @error('model') is-invalid @enderror" type="text" name="model" value="{{ old('model') }}" >
+                                <input class="form-control @error('model') is-invalid @enderror" type="text" name="model" value="{{ $car->model }}" >
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">{{ __('cars.brand') }}</label>
-                                <input class="form-control @error('brand') is-invalid @enderror" type="text" name="brand" value="{{ old('brand') }}" >
+                                <input class="form-control @error('brand') is-invalid @enderror" type="text" name="brand" value="{{ $car->brand }}" >
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">{{ __('cars.owner') }}:</label>
                                 <select name="owner_id" class="form-control">
                                     @foreach($owners as $owner)
-                                        <option value="{{ $owner->id }}" {{ $car->owner_id == $owner->id ? 'selected' : '' }}>
-                                            {{ $owner->name }} {{ $owner->surname }}
-                                        </option>
+                                        <option value="{{ $owner->id }}" {{ $car->owner_id == $owner->id ? 'selected' : '' }}>{{ $owner->name }} {{ $owner->surname }}</option>
                                     @endforeach
                                 </select>
                             </div>

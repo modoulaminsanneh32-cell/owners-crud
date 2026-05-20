@@ -10,7 +10,9 @@ use App\Http\Requests\CarRequest;
 
 class CarController extends Controller
 {
-    // 🔹 Show all cars
+    public function __construct(){
+        $this->authorizeResource(Car::class);
+    }
     public function index()
     {
         $cars = Car::with('owner')->latest()->get();
@@ -27,17 +29,10 @@ class CarController extends Controller
     // 🔹 Store new car
     public function store(CarRequest $request)
     {
-        $data = $request->validated();
-
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('cars', 'public');
-        }
-
-        Car::create($data);
-
-        return redirect()->route('cars.index')
-            ->with('success', 'Car added successfully');
+        $car=Car::create($request->all());
+        $car->user_id=$request->user()->id;
+        $car->save();
+        return redirect()->route('cars.index');
     }
 
     // 🔹 Show single car

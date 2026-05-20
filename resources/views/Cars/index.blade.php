@@ -41,8 +41,14 @@
                                     <td>{{ $car->owner?->name }} {{ $car->owner?->surname }}</td>
                                     @if (Auth::user()->type=='admin')
                                     <td>
-                                        <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-info">Edit</a>
-                                        <form action="{{ route('cars.delete', $car->id) }}" method="POST" style="display:inline;">
+                                        @can("editcar",$car)
+                                           <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-info">Edit</a>
+                                        @endcan
+
+
+                                        @can("deleteCar",$car)
+                                           <form action="{{ route('cars.delete', $car->id) }}" method="POST" style="display:inline;">
+                                        @endcan
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

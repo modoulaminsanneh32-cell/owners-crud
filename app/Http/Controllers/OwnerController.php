@@ -20,22 +20,27 @@ class OwnerController extends Controller
         return view('owners.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate(
             [
-                'name'=>'required|max:60',
-                'surname'=>'required|max:60'
-                ],[
-                    'name.required'=>__('name is required'),
-                    'name.max'=>__('name must not be longer than 60'),
-                    'surname.required'=>__('surname is required'),
-                    'surname.max'=>__('surname must not be longer than 60'),
+                'name' => 'required|max:60',
+                'surname' => 'required|max:60'
+            ], [
+                'name.required' => __('name is required'),
+                'name.max' => __('name must not be longer than 60'),
+                'surname.required' => __('surname is required'),
+                'surname.max' => __('surname must not be longer than 60'),
 
             ]
-);
+        );
 
-        // Using all() ensures 'name' and 'surname' are caught from your form
-        Owner::create($request->all());
+        $owner = new Owner();
+        $owner->name = $request->name;
+        $owner->surname = $request->surname;
+        $owner->user_id = $request->user()->id;
+        $owner->save();
+
         return redirect()->route('owners.index');
     }
 
@@ -50,9 +55,15 @@ class OwnerController extends Controller
         return redirect()->route('owners.index');
     }
 
-    public function destroy(Owner $owner)
+    public function destroy(Request $request, $id)
     {
-        $owner->delete();
+        $owner = Owner::find($id);
+
+        if ($request->user()->can('deleteOwner', $owner)) {
+            $owner->delete();
+        }
+
+
         return redirect()->route('owners.index');
     }
 }
